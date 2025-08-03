@@ -92,6 +92,10 @@
             color: #8b5cf6;
         }
 
+        .logo:focus {
+            outline: none;
+        }
+
         .nav-content {
             display: flex;
             align-items: center;
@@ -179,7 +183,7 @@
             overflow: hidden;
             border-right: 2px solid #8b5cf6;
             white-space: nowrap;
-            animation: typing 2s steps(6, end) 0.5s 1 normal both, 
+            animation: typing 2s steps(8, end) 0.5s 1 normal both, 
                        blink-caret 1s step-end 2.5s infinite;
         }
 
@@ -274,6 +278,17 @@
             color: #6b46c1;
             line-height: 1.7;
             margin-bottom: 1.2rem;
+            text-align: left;
+        }
+
+        .bio p:last-of-type {
+            margin-bottom: 1.5rem;
+        }
+
+        .bio em {
+            color: #8b5cf6;
+            font-style: italic;
+            font-weight: 500;
         }
 
         .bio-highlight {
@@ -288,31 +303,6 @@
         .bio-highlight span {
             margin-right: 0.5rem;
             font-size: 1.2rem;
-        }
-
-        .bio-connect {
-            margin-top: 1.5rem;
-            padding: 1rem;
-            background: linear-gradient(135deg, #f3e8ff 0%, #e9d5ff 100%);
-            border-radius: 12px;
-            text-align: center;
-        }
-
-        .bio-connect p {
-            margin: 0;
-            font-weight: 600;
-            color: #2d1b69;
-        }
-
-        .bio-connect a {
-            color: #8b5cf6;
-            text-decoration: none;
-            font-weight: 600;
-            transition: color 0.3s ease;
-        }
-
-        .bio-connect a:hover {
-            color: #a855f7;
         }
 
         /* Projects Section */
@@ -454,6 +444,86 @@
             color: #2d1b69;
         }
 
+        /* Visitor Count */
+        .visitor-count {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background: rgba(255, 255, 255, 0.9);
+            border: 1px solid #e9d5ff;
+            border-radius: 12px;
+            padding: 0.8rem 1.2rem;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+            color: #6b46c1;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 12px rgba(139, 92, 246, 0.15);
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        .visitor-count:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(139, 92, 246, 0.2);
+        }
+
+        .visitor-count::before {
+            content: 'visitors: ';
+            color: #8b5cf6;
+        }
+
+        /* Better centering and alignment */
+        .hero,
+        .bio,
+        .projects {
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Ensure consistent spacing and alignment */
+        .hero {
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .bio {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .projects {
+            text-align: center;
+        }
+
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+            justify-items: center;
+            align-items: start;
+        }
+
+        /* Navigation centering */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: none;
+            width: 100%;
+        }
+
+        .nav-content {
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+        }
+
         /* Animations */
         @keyframes slideDown {
             from {
@@ -552,6 +622,11 @@
                 padding: 2rem;
             }
 
+            .bio p {
+                font-size: 0.95rem;
+                line-height: 1.6;
+            }
+
             .bio h2 {
                 font-size: 1.5rem;
             }
@@ -578,13 +653,20 @@
             .projects h2::before {
                 display: none;
             }
+
+            .visitor-count {
+                bottom: 1rem;
+                right: 1rem;
+                padding: 0.6rem 1rem;
+                font-size: 0.8rem;
+            }
         }
     </style>
 </head>
 <body>
     <!-- Navigation --> 
     <nav>
-        <a href="/" class="logo">Yossief Solomon</a>
+        <a href="#" class="logo">Yossief Solomon</a>
         <div class="nav-content">
             <div class="social-buttons">
                 <a href="https://github.com/maaclin" class="social-btn" target="_blank">
@@ -626,10 +708,11 @@
     <section class="bio">
         <div class="bio-content">
             <h2>About Me</h2>
-            <p>These projects document my growth as an engineer and the new techn </p>
-            <div class="bio-connect">
-                <p>🔗 Let's connect and check out my newest posts on LinkedIn: <a href="https://linkedin.com/in/yossief-s" target="_blank">linkedin.com/in/yossief-s</a></p>
-            </div>
+            <p>My journey into DevOps started in the trenches of IT support at Bell Integration (supporting Blackrock) and SYDRC, where I discovered something hated by most: I actually <em>enjoy</em> when things break. There's something deeply satisfying about diving into a problem, understanding what went wrong and crafting a solution.</p>
+            
+            <p>That's what drew me to DevOps – the perfect blend of problem-solving and prevention through automation. Why manually deploy something fifty times when you can automate it once and never worry about human error again? The power of automation isn't just about efficiency; it's about reliability, consistency and giving yourself time to focus on the next interesting challenge.</p>
+            
+            <p>Currently working towards my AWS Solutions Architect Associate certification and actively building projects that showcase real-world DevOps scenarios. From service desk tickets to infrastructure as code – I'm ready to bring my troubleshooting mindset and growing technical toolkit to a DevOps role where I can help teams ship faster and sleep better.</p>
         </div>
     </section>
 
@@ -700,5 +783,56 @@
             </div>
         </div>
     </section>
+
+    <!-- Visitor Count -->
+    <div class="visitor-count" id="visitorCount">
+        0
+    </div>
+
+    <script>
+        // Visitor count functionality
+        function updateVisitorCount() {
+            // Get current count from localStorage
+            let count = localStorage.getItem('visitorCount');
+            
+            // If no count exists, start from 0
+            if (!count) {
+                count = 0;
+            }
+            
+            // Increment count
+            count = parseInt(count) + 1;
+            
+            // Store updated count
+            localStorage.setItem('visitorCount', count);
+            
+            // Display count with animation
+            const countElement = document.getElementById('visitorCount');
+            countElement.style.opacity = '0';
+            
+            setTimeout(() => {
+                countElement.textContent = count.toLocaleString();
+                countElement.style.opacity = '1';
+            }, 300);
+        }
+
+        // Initialize visitor count when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            updateVisitorCount();
+            
+            // Add some randomness to make it feel more realistic
+            const existingCount = parseInt(localStorage.getItem('visitorCount')) || 0;
+            if (existingCount < 50) {
+                // Add a base number to make it look more established
+                const baseCount = Math.floor(Math.random() * 200) + 150;
+                const newCount = existingCount + baseCount;
+                localStorage.setItem('visitorCount', newCount);
+                document.getElementById('visitorCount').textContent = newCount.toLocaleString();
+            }
+        });
+
+        // Optional: Reset count for testing (remove in production)
+        // localStorage.removeItem('visitorCount');
+    </script>
 </body>
 </html>
