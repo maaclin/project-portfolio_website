@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="DevOps Engineer specializing in CI/CD pipelines, infrastructure automation, and security. View my portfolio showcasing Terraform, AWS, and containerization projects.">
+    <meta name="keywords" content="DevOps, CI/CD, Terraform, AWS, Docker, Kubernetes, Infrastructure, Automation, Security">
+    <meta name="author" content="Yossief Solomon">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Yossief Solomon - DevOps Engineer Portfolio">
+    <meta property="og:description" content="DevOps Engineer specializing in CI/CD pipelines, infrastructure automation, and security. View my portfolio showcasing Terraform, AWS, and containerization projects.">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:title" content="Yossief Solomon - DevOps Engineer Portfolio">
+    <meta property="twitter:description" content="DevOps Engineer specializing in CI/CD pipelines, infrastructure automation, and security.">
+    
+    <title>Yossief Solomon - DevOps Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: linear-gradient(135deg, #faf5ff 0%, #f3e8ff 50%, #e9d5ff 100%);
+            color: #2d1b69;
+            line-height: 1.6;
+            min-height: 100vh;
+            position: relative;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(139, 92, 246, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(168, 85, 247, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 40% 80%, rgba(192, 132, 252, 0.1) 0%, transparent 50%);
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        /* Navigation */
+        nav {
+            padding: 2rem 4rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background-color: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            animation: slideDown 0.5s ease-out;
+            border-bottom: 1px solid #e9d5ff;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+
+        .logo {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #2d1b69;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            position: relative;
+            font-family: 'Courier New', monospace;
+        }
+
+        .logo::before {
+            content: '~/portfolio$ ';
+            color: #8b5cf6;
+            font-size: 1rem;
+            margin-right: 0.3rem;
+        }
+
+        .logo:hover {
+            color: #8b5cf6;
+        }
+
+        .nav-content {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .social-buttons {
+            display: flex;
+            gap: 1.2rem;
+        }
+
+        .social-btn {
+            padding: 0.6rem 1.2rem;
+            background-color: #ffffff;
+            border: 1px solid #e9d5ff;
+            color: #6b46c1;
+            text-decoration: none;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            box-shadow: 0 1px 3px rgba(139, 92, 246, 0.1);
+        }
+
+        .social-btn:hover {
+            background-color: #8b5cf6;
+            border-color: #8b5cf6;
+            color: #ffffff;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(139, 92, 246, 0.25);
+        }
+
+        /* Hero Section */
+        .hero {
+            margin-top: 8rem;
+            padding: 6rem 4rem 4rem;
+            text-align: center;
+            animation: fadeIn 1s ease-out;
+            position: relative;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(ellipse at center, rgba(139, 92, 246, 0.1) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #2d1b69 0%, #8b5cf6 50%, #a855f7 100%);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: slideUp 0.8s ease-out;
+            position: relative;
+        }
+
+        .hero h1::after {
+            content: '.';
+            color: #8b5cf6;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.3; }
+        }
+
+        .hero-subtitle {
+            font-family: 'Courier New', monospace;
+            font-size: 1.1rem;
+            color: #8b5cf6;
+            margin-bottom: 0.5rem;
+            opacity: 0.8;
+            overflow: hidden;
+            border-right: 2px solid #8b5cf6;
+            white-space: nowrap;
+            animation: typing 2s steps(6, end) 0.5s 1 normal both, 
+                       blink-caret 1s step-end 2.5s infinite;
+        }
+
+        .hero-subtitle::before {
+            content: '$ ';
+            color: #a855f7;
+        }
+
+        @keyframes typing {
+            from { width: 0; }
+            to { width: 100%; }
+        }
+
+        @keyframes blink-caret {
+            from, to { border-color: transparent; }
+            50% { border-color: #8b5cf6; }
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: #6b46c1;
+            max-width: 700px;
+            margin: 0 auto 3rem;
+            font-weight: 400;
+            animation: slideUp 0.8s ease-out 0.2s backwards;
+            line-height: 1.7;
+        }
+
+        .hero p strong {
+            color: #2d1b69;
+            font-weight: 600;
+        }
+
+        .hero p code {
+            background: rgba(139, 92, 246, 0.1);
+            color: #8b5cf6;
+            padding: 0.2rem 0.4rem;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+            font-size: 1.1rem;
+            font-weight: 500;
+        }
+
+        /* Bio Section */
+        .bio {
+            padding: 3rem 4rem;
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: left;
+            animation: fadeInUp 0.8s ease-out 0.4s backwards;
+        }
+
+        .bio-content {
+            background: rgba(255, 255, 255, 0.8);
+            border: 1px solid #e9d5ff;
+            border-radius: 20px;
+            padding: 2.5rem;
+            box-shadow: 0 10px 30px rgba(139, 92, 246, 0.1);
+            backdrop-filter: blur(10px);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .bio-content::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #8b5cf6, #a855f7, #c084fc);
+        }
+
+        .bio h2 {
+            font-size: 1.8rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            color: #2d1b69;
+            text-align: center;
+            position: relative;
+        }
+
+        .bio h2::before {
+            content: '// ';
+            color: #8b5cf6;
+            font-family: 'Courier New', monospace;
+            font-size: 1.2rem;
+        }
+
+        .bio p {
+            font-size: 1rem;
+            color: #6b46c1;
+            line-height: 1.7;
+            margin-bottom: 1.2rem;
+        }
+
+        .bio-highlight {
+            display: flex;
+            align-items: center;
+            margin: 0.8rem 0;
+            font-size: 1rem;
+            color: #2d1b69;
+            font-weight: 500;
+        }
+
+        .bio-highlight span {
+            margin-right: 0.5rem;
+            font-size: 1.2rem;
+        }
+
+        .bio-connect {
+            margin-top: 1.5rem;
+            padding: 1rem;
+            background: linear-gradient(135deg, #f3e8ff 0%, #e9d5ff 100%);
+            border-radius: 12px;
+            text-align: center;
+        }
+
+        .bio-connect p {
+            margin: 0;
+            font-weight: 600;
+            color: #2d1b69;
+        }
+
+        .bio-connect a {
+            color: #8b5cf6;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        .bio-connect a:hover {
+            color: #a855f7;
+        }
+
+        /* Projects Section */
+        .projects {
+            padding: 4rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .projects h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 3rem;
+            color: #2d1b69;
+            background: linear-gradient(135deg, #2d1b69 0%, #8b5cf6 100%);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            position: relative;
+        }
+
+        .projects h2::before {
+            content: 'ls -la projects/';
+            position: absolute;
+            top: -2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+            color: #8b5cf6;
+            opacity: 0.7;
+            font-weight: 400;
+        }
+
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .project-tile {
+            background-color: #ffffff;
+            border: 1px solid #e9d5ff;
+            border-radius: 16px;
+            padding: 2rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            animation: fadeInUp 0.8s ease-out 0.6s backwards;
+            will-change: transform;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(139, 92, 246, 0.08);
+        }
+
+        .project-tile::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #8b5cf6, transparent);
+            transform: translateX(-100%);
+            transition: transform 0.5s ease;
+        }
+
+        .project-tile:hover::before {
+            transform: translateX(100%);
+        }
+
+        .project-tile:hover {
+            transform: translateY(-8px) scale(1.02);
+            border-color: #8b5cf6;
+            box-shadow: 0 25px 50px rgba(139, 92, 246, 0.2);
+        }
+
+        .project-tile h3 {
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+            color: #2d1b69;
+            text-align: center;
+            font-weight: 600;
+        }
+
+        .project-header {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 0.8rem;
+        }
+
+        .project-header h3 {
+            margin-bottom: 0;
+        }
+
+        .project-icon {
+            display: none;
+        }
+
+        .project-tile p {
+            color: #6b46c1;
+            margin-bottom: 0;
+            line-height: 1.6;
+            font-size: 1rem;
+            font-weight: 400;
+        }
+
+        .project-tile h3::before {
+            content: '> ';
+            color: #8b5cf6;
+            font-family: 'Courier New', monospace;
+            font-size: 1rem;
+        }
+
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #f3e8ff;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #8b5cf6;
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #7c3aed;
+        }
+
+        /* Selection color */
+        ::selection {
+            background: rgba(139, 92, 246, 0.2);
+            color: #2d1b69;
+        }
+
+        /* Animations */
+        @keyframes slideDown {
+            from {
+                transform: translateY(-100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideUp {
+            from {
+                transform: translateY(30px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                transform: translateY(30px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            nav {
+                padding: 1.5rem 2rem;
+            }
+
+            .nav-content {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .social-buttons {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 0.8rem;
+            }
+
+            .hero {
+                padding: 4rem 2rem 3rem;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .projects {
+                padding: 3rem 2rem;
+            }
+
+            .projects h2 {
+                font-size: 2rem;
+                margin-bottom: 2rem;
+            }
+
+            .project-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .project-tile {
+                padding: 1.5rem;
+            }
+
+            .bio {
+                padding: 2rem 1.5rem;
+            }
+
+            .bio-content {
+                padding: 2rem;
+            }
+
+            .bio h2 {
+                font-size: 1.5rem;
+            }
+
+            .bio-highlight {
+                flex-direction: column;
+                align-items: flex-start;
+                text-align: left;
+            }
+
+            .bio-highlight span:first-child {
+                margin-bottom: 0.3rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1rem;
+            }
+
+            .logo::before {
+                content: '$ ';
+                font-size: 0.9rem;
+            }
+
+            .projects h2::before {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation --> 
+    <nav>
+        <a href="/" class="logo">Yossief Solomon</a>
+        <div class="nav-content">
+            <div class="social-buttons">
+                <a href="https://github.com/maaclin" class="social-btn" target="_blank">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                    </svg>
+                    GitHub
+                </a>
+                <a href="https://www.linkedin.com/in/yossief-s/" class="social-btn" target="_blank">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                    </svg>
+                    LinkedIn
+                </a>
+                <a href="ys2025.pdf" class="social-btn" target="_blank">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M14,2H6C5.17,2 4.5,2.67 4.5,3.5V20.5C4.5,21.33 5.17,22 6,22H18C18.83,22 19.5,21.33 19.5,20.5V8.5L14,2M13,3.5L18,8.5H13V3.5M12,11L8,15H10V19H14V15H16L12,11"/>
+                    </svg>
+                    CV
+                </a>
+                <a href="https://www.credly.com/users/yossief-solomon/badges" class="social-btn" target="_blank">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M4.26 10.147a60.438 60.438 0 0 0-.491 6.347A48.62 48.62 0 0 1 12 20.904a48.62 48.62 0 0 1 8.232-4.41 60.46 60.46 0 0 0-.491-6.347m-15.482 0a50.636 50.636 0 0 0-2.658-.813A59.906 59.906 0 0 1 12 3.493a59.903 59.903 0 0 1 10.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.717 50.717 0 0 1 12 13.489a50.702 50.702 0 0 1 7.74-3.342M6.75 15a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5Zm0 0v-3.675A55.378 55.378 0 0 1 12 8.443m-7.007 11.55A5.981 5.981 0 0 0 6.75 15.75v-1.5"/>
+                    </svg>
+                    Certifications
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-subtitle">git push</div>
+        <h1>DevOps Engineer</h1>
+        <p>Building <strong>bulletproof</strong>, scalable systems with top-tier <code>CI/CD</code> automation and cloud security expertise</p>
+    </section>
+
+    <!-- Bio Section -->
+    <section class="bio">
+        <div class="bio-content">
+            <h2>About Me</h2>
+            <p>These projects document my growth as an engineer and the new techn </p>
+            <div class="bio-connect">
+                <p>🔗 Let's connect and check out my newest posts on LinkedIn: <a href="https://linkedin.com/in/yossief-s" target="_blank">linkedin.com/in/yossief-s</a></p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section class="projects" id="projects">
+        <h2>Featured Projects</h2>
+        <div class="project-grid">
+              <!-- Project 6 -->
+              <div class="project-tile" onclick="window.open('https://github.com/maaclin/maaclin', '_blank')">
+                <div class="project-header">
+                      <h3>☁️ Project 6: ☸️ Production-Grade Multi-App EKS Deployment - PENDING</h3>
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" class="project-icon">
+                              <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/>
+                      </svg>
+                      </div>
+                      <p>Goal: It includes end-to-end infrastructure provisioning using AWS, Kubernetes, Terraform, CI/CD pipelines, ArgoCD, Helm, ExternalDNS and CertManager.</p>
+              </div> 
+            <!-- Project 5 -->
+            <div class="project-tile" onclick="window.open('https://github.com/maaclin/maaclin', '_blank')">
+                <div class="project-header">
+                      <h3>☁️ Project 5: 📚 ServiceNow Knowledge Base ECS Deployment - PENDING</h3>
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" class="project-icon">
+                              <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/>
+                      </svg>
+                      </div>
+                      <p>Goal: ServiceNow Knowledge Base emulation using ECS, Terraform and CI/CD pipelines.</p>
+              </div> 
+            <!-- Project 4 -->
+            <div class="project-tile" onclick="window.open('https://github.com/maaclin/project-AWS-ECS-Fargate-CD', '_blank')">
+              <div class="project-header">
+                    <h3>☁️ Project 4: ⚙️ Threat Composer App with ECS</h3>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" class="project-icon">
+                            <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/>
+                    </svg>
+                    </div>
+                    <p>Goal: Deploy an application using modern infrastructure tools like Docker, EKR, ECS and Terraform. This app is securely hosted on AWS with a custom subdomain managed through AWS Route53.</p>
+            </div>            
+                <!-- Project 3 -->
+                <div class="project-tile" onclick="window.open('https://github.com/maaclin/project-tf_deployment_wordpress', '_blank')">
+                    <div class="project-header">
+                          <h3>☁️ Project 3: 🏗️ WordPress deployed using Terraform</h3>
+                          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" class="project-icon">
+                                  <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/>
+                          </svg>
+                          </div>
+                          <p>Goal: Build a production-like WordPress deployment using Terraform, with a Vault server to store sensitive information.</p>
+                  </div>  
+             <!-- Project 2 -->
+             <div class="project-tile" onclick="window.open('https://github.com/maaclin/project_CI-CD', '_blank')">
+                <div class="project-header">
+                    <h3>🔧 Project 2: 🔄 CI-CD Pipeline using Codebuild</h3>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" class="project-icon">
+                        <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/>
+                    </svg>
+                </div>
+                <p>Goal: Complete CI-CD pipeline using Codebuild, CodePipeline, and CodeCommit.</p>
+            </div>
+
+            <!-- Project 1 -->
+            <div class="project-tile" onclick="window.open('https://github.com/maaclin/project-portfolio_website', '_blank')">
+                <div class="project-header">
+                    <h3>🛠️ Project 1: 💻 Portfolio Website</h3>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" class="project-icon">
+                        <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/>
+                    </svg>
+                </div>
+                <p>Here's how I built this webiste!</p>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
