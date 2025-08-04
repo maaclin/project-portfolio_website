@@ -5,22 +5,6 @@ resource "aws_s3_bucket" "s3" {
   bucket = "ysolom-portfolio"
 }
 
-resource "aws_s3_object" "index" {
-  bucket       = aws_s3_bucket.s3.id
-  key          = "index.html"
-  source       = "/Users/ys/Desktop/Coderco/project-portfolio/index.html"
-  content_type = "text/html"
-  etag         = filemd5("/Users/ys/Desktop/Coderco/project-portfolio/index.html")
-}
-
-resource "aws_s3_object" "resume" {
-  bucket       = aws_s3_bucket.s3.id
-  key          = "ys2025.pdf" 
-  source       = "/Users/ys/Desktop/Coderco/project-portfolio/ys2025.pdf"
-  content_type = "application/pdf"
-  etag         = filemd5("/Users/ys/Desktop/Coderco/project-portfolio/ys2025.pdf")
-}
-
 data "aws_caller_identity" "current" {}
 
 resource "aws_s3_bucket_public_access_block" "s3" {
