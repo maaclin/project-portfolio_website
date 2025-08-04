@@ -26,7 +26,7 @@ I am hosting my own personal portfolio webpage, hosted on S3 through static webs
 
 This setup follows the move from OAI to OAC, which is more secure and removes the need for extra IAM policies. The distribution uses index.html as the root object and includes aliases for both the root domain and the www subdomain. I configured CloudFront to redirect HTTP to HTTPS so end users always access the secure version of the site.
 
-The ACM certificate is created first—before the CloudFront distribution to avoid dependency errors, since CloudFront requires a valid certificate ARN at creation time. I used a data block to reference the already existing hosted zone for ysolomprojects.co.uk. Then, I created alias A records for both the root and www domains, which point to the CloudFront distribution. Using AWS’s alias records means I don’t need to manage IP addresses; AWS resolves that dynamically.
+The ACM certificate is created first, before the CloudFront distribution to avoid dependency errors, since CloudFront requires a valid certificate ARN at creation time. I used a data block to reference the already existing hosted zone for ysolomprojects.co.uk. Then, I created alias A records for both the root and www domains, which point to the CloudFront distribution. Using AWS’s alias records means I don’t need to manage IP addresses; AWS resolves that dynamically.
 
 Including both domain versions ensures users can reach the site whether or not they include www. in the URL.
 
