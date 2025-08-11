@@ -1,1055 +1,285 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="DevOps Engineer specializing in CI/CD pipelines, infrastructure automation, and security. View my portfolio showcasing Terraform, AWS, and containerization projects.">
-    <meta name="keywords" content="DevOps, CI/CD, Terraform, AWS, Docker, Kubernetes, Infrastructure, Automation, Security">
-    <meta name="author" content="Yossief Solomon">
-    
-    <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website">
-    <meta property="og:title" content="Yossief Solomon - DevOps Engineer Portfolio">
-    <meta property="og:description" content="DevOps Engineer specializing in CI/CD pipelines, infrastructure automation, and security. View my portfolio showcasing Terraform, AWS, and containerization projects.">
-    
-    <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:title" content="Yossief Solomon - DevOps Engineer Portfolio">
-    <meta property="twitter:description" content="DevOps Engineer specializing in CI/CD pipelines, infrastructure automation, and security.">
-    
-    <title>Yossief Solomon - DevOps Portfolio</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&display=swap" rel="stylesheet">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-            background: linear-gradient(135deg, #faf5ff 0%, #f3e8ff 50%, #e9d5ff 100%);
-            color: #2d1b69;
-            line-height: 1.6;
-            min-height: 100vh;
-            position: relative;
-        }
-
-        body::before {
-            content: '';
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: 
-                radial-gradient(circle at 20% 50%, rgba(139, 92, 246, 0.1) 0%, transparent 50%),
-                radial-gradient(circle at 80% 20%, rgba(168, 85, 247, 0.1) 0%, transparent 50%),
-                radial-gradient(circle at 40% 80%, rgba(192, 132, 252, 0.1) 0%, transparent 50%);
-            pointer-events: none;
-            z-index: -1;
-        }
-
-        /* Navigation */
-        nav {
-            padding: 2rem 4rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            background-color: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            z-index: 1000;
-            animation: slideDown 0.5s ease-out;
-            border-bottom: 1px solid #e9d5ff;
-            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-        }
-
-        .logo {
-            font-size: 1.2rem;
-            font-weight: 600;
-            color: #2d1b69;
-            text-decoration: none;
-            transition: all 0.3s ease;
-            position: relative;
-            font-family: 'Courier New', monospace;
-        }
-
-        .logo::before {
-            content: '~/portfolio$ ';
-            color: #8b5cf6;
-            font-size: 1rem;
-            margin-right: 0.3rem;
-        }
-
-        .logo:hover {
-            color: #8b5cf6;
-        }
-
-        .logo:focus {
-            outline: none;
-        }
-
-        .nav-content {
-            display: flex;
-            align-items: center;
-            gap: 2rem;
-        }
-
-        .social-buttons {
-            display: flex;
-            gap: 1.2rem;
-        }
-
-        .social-btn {
-            padding: 0.6rem 1.2rem;
-            background-color: #ffffff;
-            border: 1px solid #e9d5ff;
-            color: #6b46c1;
-            text-decoration: none;
-            border-radius: 8px;
-            font-size: 0.9rem;
-            font-weight: 500;
-            transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            box-shadow: 0 1px 3px rgba(139, 92, 246, 0.1);
-        }
-
-        .social-btn:hover {
-            background-color: #8b5cf6;
-            border-color: #8b5cf6;
-            color: #ffffff;
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(139, 92, 246, 0.25);
-        }
-
-        /* Hero Section */
-        .hero {
-            margin-top: 8rem;
-            padding: 4rem 4rem 2rem;
-            text-align: center;
-            animation: fadeIn 1s ease-out;
-            position: relative;
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: radial-gradient(ellipse at center, rgba(139, 92, 246, 0.1) 0%, transparent 70%);
-            pointer-events: none;
-        }
-
-        .hero h1 {
-            font-size: 3.5rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-            background: linear-gradient(135deg, #2d1b69 0%, #8b5cf6 50%, #a855f7 100%);
-            background-clip: text;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            animation: slideUp 0.8s ease-out;
-            position: relative;
-        }
-
-        .hero h1::after {
-            content: '.';
-            color: #8b5cf6;
-            animation: pulse 2s infinite;
-        }
-
-        @keyframes pulse {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.3; }
-        }
-
-        .hero-subtitle {
-            font-family: 'Courier New', monospace;
-            font-size: 1.1rem;
-            color: #8b5cf6;
-            margin-bottom: 0.5rem;
-            opacity: 0.8;
-            overflow: hidden;
-            border-right: 2px solid #8b5cf6;
-            white-space: nowrap;
-            animation: typing 2s steps(8, end) 0.5s 1 normal both, 
-                       blink-caret 1s step-end 2.5s infinite;
-        }
-
-        .hero-subtitle::before {
-            content: '$ ';
-            color: #a855f7;
-        }
-
-        @keyframes typing {
-            from { width: 0; }
-            to { width: 100%; }
-        }
-
-        @keyframes blink-caret {
-            from, to { border-color: transparent; }
-            50% { border-color: #8b5cf6; }
-        }
-
-        .hero p {
-            font-size: 1.2rem;
-            color: #6b46c1;
-            max-width: 700px;
-            margin: 0 auto 3rem;
-            font-weight: 400;
-            animation: slideUp 0.8s ease-out 0.2s backwards;
-            line-height: 1.7;
-        }
-
-        .hero p strong {
-            color: #2d1b69;
-            font-weight: 600;
-        }
-
-        .hero p code {
-            background: rgba(139, 92, 246, 0.1);
-            color: #8b5cf6;
-            padding: 0.2rem 0.4rem;
-            border-radius: 4px;
-            font-family: 'Courier New', monospace;
-            font-size: 1.1rem;
-            font-weight: 500;
-        }
-
-        /* Bio Section */
-        .bio {
-            padding: 3rem 4rem;
-            max-width: 900px;
-            margin: 0 auto;
-            text-align: left;
-            animation: fadeInUp 0.8s ease-out 0.4s backwards;
-            font-family: 'Open Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-        }
-
-        .bio-content {
-            background: rgba(255, 255, 255, 0.8);
-            border: 1px solid #e9d5ff;
-            border-radius: 20px;
-            padding: 2.5rem;
-            box-shadow: 0 10px 30px rgba(139, 92, 246, 0.1);
-            backdrop-filter: blur(10px);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .bio-content::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 3px;
-            background: linear-gradient(90deg, #8b5cf6, #a855f7, #c084fc);
-        }
-
-        .bio h2 {
-            font-size: 1.8rem;
-            font-weight: 600;
-            margin-bottom: 1.5rem;
-            color: #2d1b69;
-            text-align: center;
-            position: relative;
-        }
-
-        .bio h2::before {
-            content: '// ';
-            color: #8b5cf6;
-            font-family: 'Courier New', monospace;
-            font-size: 1.2rem;
-        }
-
-        .bio p {
-            font-size: 1rem;
-            color: #6b46c1;
-            line-height: 1.7;
-            margin-bottom: 1.2rem;
-            text-align: left;
-        }
-
-        .bio p:last-of-type {
-            margin-bottom: 1.5rem;
-        }
-
-        .bio em {
-            color: #8b5cf6;
-            font-style: italic;
-            font-weight: 500;
-        }
-
-        .bio-highlight {
-            display: flex;
-            align-items: center;
-            margin: 0.8rem 0;
-            font-size: 1rem;
-            color: #2d1b69;
-            font-weight: 500;
-        }
-
-        .bio-highlight span {
-            margin-right: 0.5rem;
-            font-size: 1.2rem;
-        }
-
-        /* Projects Section */
-        .projects {
-            padding: 4rem;
-            max-width: 1200px;
-            margin: 0 auto;
-            font-family: 'Open Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-        }
-
-        .projects h2 {
-            text-align: center;
-            font-size: 2.5rem;
-            font-weight: 700;
-            margin-bottom: 3rem;
-            color: #2d1b69;
-            background: linear-gradient(135deg, #2d1b69 0%, #8b5cf6 100%);
-            background-clip: text;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            position: relative;
-        }
-
-        .projects h2::before {
-            content: 'ls -la projects/';
-            position: absolute;
-            top: -2rem;
-            left: 50%;
-            transform: translateX(-50%);
-            font-family: 'Courier New', monospace;
-            font-size: 0.9rem;
-            color: #8b5cf6;
-            opacity: 0.7;
-            font-weight: 400;
-        }
-
-        .project-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
-            gap: 2rem;
-            margin-bottom: 4rem;
-        }
-
-        .project-tile {
-            background-color: #ffffff;
-            border: 1px solid #e9d5ff;
-            border-radius: 16px;
-            padding: 2rem;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-            animation: fadeInUp 0.8s ease-out 0.6s backwards;
-            will-change: transform;
-            text-align: center;
-            box-shadow: 0 4px 6px rgba(139, 92, 246, 0.08);
-        }
-
-        .project-tile::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 2px;
-            background: linear-gradient(90deg, transparent, #8b5cf6, transparent);
-            transform: translateX(-100%);
-            transition: transform 0.5s ease;
-        }
-
-        .project-tile:hover::before {
-            transform: translateX(100%);
-        }
-
-        .project-tile:hover {
-            transform: translateY(-8px) scale(1.02);
-            border-color: #8b5cf6;
-            box-shadow: 0 25px 50px rgba(139, 92, 246, 0.2);
-        }
-
-        .project-tile h3 {
-            font-size: 1.4rem;
-            margin-bottom: 1rem;
-            color: #2d1b69;
-            text-align: center;
-            font-weight: 600;
-        }
-
-        .project-header {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin-bottom: 0.8rem;
-        }
-
-        .project-header h3 {
-            margin-bottom: 0;
-        }
-
-        .project-icon {
-            display: none;
-        }
-
-        .project-tile p {
-            color: #6b46c1;
-            margin-bottom: 0;
-            line-height: 1.6;
-            font-size: 1rem;
-            font-weight: 400;
-        }
-
-        .project-tile h3::before {
-            content: '> ';
-            color: #8b5cf6;
-            font-family: 'Courier New', monospace;
-            font-size: 1rem;
-        }
-
-        /* Custom scrollbar */
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
-
-        ::-webkit-scrollbar-track {
-            background: #f3e8ff;
-        }
-
-        ::-webkit-scrollbar-thumb {
-            background: #8b5cf6;
-            border-radius: 4px;
-        }
-
-        ::-webkit-scrollbar-thumb:hover {
-            background: #7c3aed;
-        }
-
-        /* Selection color */
-        ::selection {
-            background: rgba(139, 92, 246, 0.2);
-            color: #2d1b69;
-        }
-
-        /* Visitor Count */
-        .visitor-count {
-            position: fixed;
-            bottom: 2rem;
-            right: 2rem;
-            background: rgba(255, 255, 255, 0.9);
-            border: 1px solid #e9d5ff;
-            border-radius: 12px;
-            padding: 0.8rem 1.2rem;
-            font-family: 'Courier New', monospace;
-            font-size: 0.9rem;
-            color: #6b46c1;
-            backdrop-filter: blur(10px);
-            box-shadow: 0 4px 12px rgba(139, 92, 246, 0.15);
-            z-index: 1000;
-            transition: all 0.3s ease;
-        }
-
-        .visitor-count:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(139, 92, 246, 0.2);
-        }
-
-        .visitor-count::before {
-            content: 'visitors: ';
-            color: #8b5cf6;
-        }
-
-        /* Better centering and alignment */
-        .hero,
-        .bio,
-        .projects {
-            max-width: 1200px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        /* Ensure consistent spacing and alignment */
-        .hero {
-            text-align: center;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .bio {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .projects {
-            text-align: center;
-        }
-
-        .project-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
-            gap: 2rem;
-            margin-bottom: 4rem;
-            justify-items: center;
-            align-items: start;
-        }
-
-        /* Navigation centering */
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            max-width: none;
-            width: 100%;
-        }
-
-        .nav-content {
-            display: flex;
-            align-items: center;
-            justify-content: flex-end;
-        }
-
-        /* Animations */
-        @keyframes slideDown {
-            from {
-                transform: translateY(-100%);
-                opacity: 0;
-            }
-            to {
-                transform: translateY(0);
-                opacity: 1;
-            }
-        }
-
-        @keyframes slideUp {
-            from {
-                transform: translateY(30px);
-                opacity: 0;
-            }
-            to {
-                transform: translateY(0);
-                opacity: 1;
-            }
-        }
-
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-            }
-            to {
-                opacity: 1;
-            }
-        }
-
-        @keyframes fadeInUp {
-            from {
-                transform: translateY(30px);
-                opacity: 0;
-            }
-            to {
-                transform: translateY(0);
-                opacity: 1;
-            }
-        }
-
-        /* Resume Modal */
-        .resume-modal {
-            display: none;
-            position: fixed;
-            z-index: 2000;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.8);
-            backdrop-filter: blur(5px);
-            animation: fadeIn 0.3s ease-out;
-        }
-
-        .resume-modal.show {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .resume-modal-content {
-            position: relative;
-            width: 90%;
-            height: 90%;
-            max-width: 1000px;
-            background: #ffffff;
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
-            animation: slideUp 0.3s ease-out;
-        }
-
-        .resume-modal-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1rem 1.5rem;
-            background: linear-gradient(135deg, #2d1b69 0%, #8b5cf6 100%);
-            color: white;
-        }
-
-        .resume-modal-title {
-            font-size: 1.2rem;
-            font-weight: 600;
-            margin: 0;
-        }
-
-        .resume-modal-close {
-            background: none;
-            border: none;
-            color: white;
-            font-size: 1.5rem;
-            cursor: pointer;
-            padding: 0.5rem;
-            border-radius: 6px;
-            transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 40px;
-            height: 40px;
-        }
-
-        .resume-modal-close:hover {
-            background: rgba(255, 255, 255, 0.2);
-            transform: scale(1.1);
-        }
-
-        .resume-iframe {
-            width: 100%;
-            height: calc(100% - 70px);
-            border: none;
-            background: #f8f9fa;
-        }
-
-        .resume-fallback {
-            display: none;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            height: calc(100% - 70px);
-            text-align: center;
-            padding: 2rem;
-            color: #6b46c1;
-        }
-
-        .resume-fallback-icon {
-            font-size: 4rem;
-            margin-bottom: 1rem;
-            color: #8b5cf6;
-        }
-
-        .resume-fallback h3 {
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-            color: #2d1b69;
-        }
-
-        .resume-fallback p {
-            margin-bottom: 1.5rem;
-            color: #6b46c1;
-        }
-
-        .resume-download-btn {
-            padding: 0.8rem 2rem;
-            background: linear-gradient(135deg, #8b5cf6, #a855f7);
-            color: white;
-            text-decoration: none;
-            border-radius: 8px;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .resume-download-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(139, 92, 246, 0.3);
-        }
-
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            nav {
-                padding: 1.5rem 2rem;
-            }
-
-            .nav-content {
-                flex-direction: column;
-                gap: 1rem;
-            }
-
-            .social-buttons {
-                flex-wrap: wrap;
-                justify-content: center;
-                gap: 0.8rem;
-            }
-
-            .hero {
-                padding: 3rem 2rem 1.5rem;
-            }
-
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-
-            .hero p {
-                font-size: 1rem;
-            }
-
-            .projects {
-                padding: 3rem 2rem;
-            }
-
-            .projects h2 {
-                font-size: 2rem;
-                margin-bottom: 2rem;
-            }
-
-            .project-grid {
-                grid-template-columns: 1fr;
-                gap: 1.5rem;
-            }
-
-            .project-tile {
-                padding: 1.5rem;
-            }
-
-            .bio {
-                padding: 2rem 1.5rem;
-            }
-
-            .bio-content {
-                padding: 2rem;
-            }
-
-            .bio p {
-                font-size: 0.95rem;
-                line-height: 1.6;
-            }
-
-            .bio h2 {
-                font-size: 1.5rem;
-            }
-
-            .bio-highlight {
-                flex-direction: column;
-                align-items: flex-start;
-                text-align: left;
-            }
-
-            .bio-highlight span:first-child {
-                margin-bottom: 0.3rem;
-            }
-
-            .hero-subtitle {
-                font-size: 1rem;
-            }
-
-            .logo::before {
-                content: '$ ';
-                font-size: 0.9rem;
-            }
-
-            .projects h2::before {
-                display: none;
-            }
-
-            .visitor-count {
-                bottom: 1rem;
-                right: 1rem;
-                padding: 0.6rem 1rem;
-                font-size: 0.8rem;
-            }
-
-            .resume-modal-content {
-                width: 95%;
-                height: 95%;
-                margin: 1rem;
-            }
-
-            .resume-modal-header {
-                padding: 0.8rem 1rem;
-            }
-
-            .resume-modal-title {
-                font-size: 1rem;
-            }
-
-            .resume-fallback {
-                padding: 1rem;
-            }
-
-            .resume-fallback-icon {
-                font-size: 3rem;
-            }
-
-            .resume-fallback h3 {
-                font-size: 1.2rem;
-            }
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Yossief Solomon — DevOps Portfolio</title>
+  <meta name="description" content="DevOps Engineer — CI/CD, Infrastructure as Code, AWS. Projects, case studies, and certification highlights." />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      /* Arctic blue palette */
+      --ink: #0b132b;          /* deep navy */
+      --ink-2: #1c2541;        /* slate navy */
+      --glacier: #3a506b;      /* steel blue */
+      --ice: #5bc0eb;          /* sky */
+      --ice-2: #90e0ef;        /* bright ice */
+      --aqua: #0ea5e9;         /* accent */
+      --teal: #0891b2;         /* accent 2 */
+      --snow: #f8fbff;         /* background */
+      --frost: rgba(255,255,255,0.75);
+      --muted: #7a93ad;
+      --ok: #22c55e;
+      --warn: #f59e0b;
+      --danger: #ef4444;
+      --ring: rgba(14,165,233,.35);
+      --shadow: 0 10px 30px rgba(11,19,43,.25);
+      --glass: backdrop-filter: blur(8px);
+    }
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: 'Outfit', system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+      color: var(--ink);
+      background: radial-gradient(1200px 800px at 10% -10%, rgba(14,165,233,.18), transparent 60%),
+                  radial-gradient(1000px 700px at 110% 10%, rgba(90,200,250,.18), transparent 60%),
+                  linear-gradient(180deg, #eaf6ff 0%, #f6fbff 35%, #ffffff 100%);
+      min-height: 100vh;
+    }
+
+    /* ---------- Nav ---------- */
+    .nav {
+      position: sticky; top: 0; z-index: 50;
+      display: grid; grid-template-columns: 1fr auto; align-items: center;
+      padding: 16px 28px; margin: 12px; border-radius: 16px;
+      background: var(--frost);
+      border: 1px solid rgba(14,165,233,.25);
+      box-shadow: 0 6px 30px rgba(14,165,233,.15);
+      backdrop-filter: blur(10px);
+    }
+    .brand { display: inline-flex; gap: 10px; align-items: center; text-decoration: none; }
+    .logo-dot { width: 12px; height: 12px; border-radius: 50%; background: linear-gradient(135deg, var(--aqua), var(--ice)); box-shadow: 0 0 0 4px var(--ring); }
+    .brand span { font-weight:800; letter-spacing:.2px; font-size:clamp(1.1rem,2.2vw,1.4rem); background: linear-gradient(135deg, var(--ink) 20%, var(--glacier) 50%, var(--aqua) 100%); -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; }
+    .nav-cta { display: flex; gap: 10px; align-items: center; }
+    .btn { appearance: none; border: 1px solid rgba(14,165,233,.35); background: white; color: var(--ink); padding: 10px 14px; border-radius: 12px; font-weight: 600; text-decoration: none; display: inline-flex; gap: 8px; align-items: center; box-shadow: 0 4px 12px rgba(11,19,43,.08); transition: transform .15s ease, box-shadow .15s ease, border-color .15s ease; }
+    .btn:hover { transform: translateY(-2px); box-shadow: 0 10px 20px rgba(14,165,233,.18); border-color: var(--aqua); }
+    .btn.primary { background: linear-gradient(135deg, var(--aqua), var(--teal)); color: white; border: 1px solid transparent; }
+    .btn.primary:hover { box-shadow: 0 12px 26px rgba(8,145,178,.35); }
+
+    /* ---------- Hero ---------- */
+    .hero { max-width: 1100px; margin: 70px auto 20px; padding: 0 24px; display: grid; gap: 22px; text-align: center; }
+    .mono { font-family: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; color: var(--glacier); opacity: .9; }
+    .type { display: inline-block; border-right: 2px solid var(--aqua); padding-right: 6px; white-space: nowrap; overflow: hidden; animation: typing 2.2s steps(14, end), blink .9s step-end infinite; }
+    @keyframes typing { from { width: 0 } to { width: 14ch } } @keyframes blink { 50% { border-color: transparent } }
+
+    h1.title { font-size: clamp(2.2rem, 5vw, 4rem); line-height: 1.05; margin: 0; font-weight: 800; letter-spacing: -.5px;
+      background: linear-gradient(135deg, var(--ink) 20%, var(--glacier) 50%, var(--aqua) 100%);
+      -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+      text-shadow: 0 10px 40px rgba(14,165,233,.2);
+    }
+    .lede { font-size: clamp(1rem, 2.1vw, 1.25rem); color: var(--ink-2); opacity: .9; margin: 4px auto 0; max-width: 800px; }
+
+    .hero-badges { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin-top: 8px; }
+    .badge { padding: 7px 10px; border: 1px dashed rgba(14,165,233,.45); border-radius: 999px; background: #ffffff; font-weight: 600; font-size: .9rem; }
+
+    /* KPI strip */
+    .kpis { max-width: 1100px; margin: 18px auto 0; padding: 0 24px; display: grid; grid-template-columns: 1fr; gap: 14px; }
+    .kpi { background: rgba(255,255,255,.9); border: 1px solid rgba(14,165,233,.25); border-radius: 16px; padding: 16px; text-align: center; box-shadow: var(--shadow); }
+    .kpi strong { display: block; font-size: 1.6rem; }
+    .kpi small { color: var(--muted); }
+    @media (max-width: 860px){ .kpis{ grid-template-columns: 1fr; } }
+
+    /* ---------- Sections ---------- */
+    section { padding: 64px 24px; }
+    .container { max-width: 1100px; margin: 0 auto; }
+    .section-title { font-size: clamp(1.4rem, 2.3vw, 2rem); font-weight: 800; margin: 0 0 18px; position: relative; }
+    .section-title::after { content: ""; position: absolute; left: 0; bottom: -8px; width: 72px; height: 3px; background: linear-gradient(90deg, var(--aqua), transparent); border-radius: 2px; }
+    .muted { color: var(--muted); }
+
+    /* About */
+    .about { display: grid; grid-template-columns: 1.1fr .9fr; gap: 24px; align-items: stretch; }
+    .card { background: rgba(255,255,255,.85); border: 1px solid rgba(14,165,233,.25); border-radius: 18px; padding: 22px; box-shadow: var(--shadow); }
+    .card p { margin: 0 0 12px; line-height: 1.75; }
+    .fact { display: grid; grid-template-columns: 26px 1fr; gap: 10px; align-items: start; margin-top: 8px; }
+    .dot { width: 14px; height: 14px; border-radius: 50%; background: linear-gradient(135deg, var(--aqua), var(--ice)); box-shadow: 0 0 0 4px var(--ring); margin-top: 4px; }
+
+    @media (max-width: 980px){ .about{ grid-template-columns: 1fr; } }
+
+    /* Projects */
+    .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+    @media (max-width: 1080px){ .grid{ grid-template-columns: repeat(2, 1fr);} }
+    @media (max-width: 700px){ .grid{ grid-template-columns: 1fr; } }
+
+    .tile { position: relative; overflow: hidden; border-radius: 18px; padding: 18px; background: linear-gradient(180deg, rgba(255,255,255,.9), rgba(255,255,255,.8)); border: 1px solid rgba(14,165,233,.25); box-shadow: var(--shadow); transition: transform .2s ease, box-shadow .2s ease; }
+    .tile:hover { transform: translateY(-6px); box-shadow: 0 18px 45px rgba(14,165,233,.25); }
+    .tile h3 { margin: 2px 0 8px; font-size: 1.1rem; }
+    .tile p { margin: 0 0 10px; color: var(--ink-2); }
+    .tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; }
+    .tag { font-family: 'IBM Plex Mono', monospace; font-size: .8rem; padding: 4px 8px; border-radius: 999px; background: #f1fbff; border: 1px solid rgba(14,165,233,.35); }
+    .tile .actions { display: flex; gap: 10px; margin-top: 12px; }
+
+    /* Fast facts for recruiters */
+    .facts { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+    .factlist { list-style: none; padding: 0; margin: 0; display: grid; gap: 10px; }
+    .factlist li { background: #ffffff; border: 1px solid rgba(14,165,233,.25); border-radius: 12px; padding: 12px 14px; display: grid; grid-template-columns: 24px 1fr; gap: 10px; align-items: center; }
+
+    @media (max-width: 860px){ .facts{ grid-template-columns: 1fr; } }
+
+    /* Footer sticky CTA */
+    .sticky-cta { position: sticky; bottom: 0; z-index: 60; margin: 40px 12px 12px; }
+    .bar { display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 12px; background: linear-gradient(135deg, rgba(14,165,233,.92), rgba(8,145,178,.92)); color: #fff; padding: 14px 18px; border-radius: 14px; box-shadow: 0 18px 40px rgba(8,145,178,.35); }
+    .bar strong { font-size: 1rem; }
+
+    /* Resume Modal (kept compatible with your existing PDF) */
+    .modal { position: fixed; inset: 0; background: rgba(0,0,0,.6); display: none; align-items: center; justify-content: center; padding: 24px; }
+    .modal.show { display: flex; }
+    .modal-card { width: min(1000px, 92vw); height: min(88vh, 900px); background: #fff; border-radius: 16px; overflow: hidden; box-shadow: 0 30px 80px rgba(0,0,0,.45); display: grid; grid-template-rows: auto 1fr; }
+    .modal-head { display: flex; align-items: center; justify-content: space-between; padding: 10px 14px; background: linear-gradient(135deg, var(--ink), var(--glacier)); color: #fff; }
+    .modal-head h4 { margin: 0; }
+    .close { background: transparent; border: none; color: #fff; font-size: 22px; cursor: pointer; }
+    .modal iframe { width: 100%; height: 100%; border: 0; background: #f6f7f9; }
+  #contact .container { text-align: center; }
+    #contact .actions { display:flex; gap:10px; justify-content:center; }
+  </style>
 </head>
 <body>
-    <!-- Navigation --> 
-    <nav>
-        <a href="#" class="logo">Yossief Solomon</a>
-        <div class="nav-content">
-            <div class="social-buttons">
-                <a href="https://github.com/maaclin" class="social-btn" target="_blank">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
-                    </svg>
-                    GitHub
-                </a>
-                <a href="https://www.linkedin.com/in/yossief-s/" class="social-btn" target="_blank">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
-                    </svg>
-                    LinkedIn
-                </a>
-                <a href="#" class="social-btn" onclick="openResumeModal()">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M14,2H6C5.17,2 4.5,2.67 4.5,3.5V20.5C4.5,21.33 5.17,22 6,22H18C18.83,22 19.5,21.33 19.5,20.5V8.5L14,2M13,3.5L18,8.5H13V3.5M12,11L8,15H10V19H14V15H16L12,11"/>
-                    </svg>
-                    CV
-                </a>
-                <a href="https://www.credly.com/users/yossief-solomon/badges" class="social-btn" target="_blank">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M4.26 10.147a60.438 60.438 0 0 0-.491 6.347A48.62 48.62 0 0 1 12 20.904a48.62 48.62 0 0 1 8.232-4.41 60.46 60.46 0 0 0-.491-6.347m-15.482 0a50.636 50.636 0 0 0-2.658-.813A59.906 59.906 0 0 1 12 3.493a59.903 59.903 0 0 1 10.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.717 50.717 0 0 1 12 13.489a50.702 50.702 0 0 1 7.74-3.342M6.75 15a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5Zm0 0v-3.675A55.378 55.378 0 0 1 12 8.443m-7.007 11.55A5.981 5.981 0 0 0 6.75 15.75v-1.5"/>
-                    </svg>
-                    Certifications
-                </a>
-            </div>
-        </div>
-    </nav>
-
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="hero-subtitle">git push</div>
-        <h1>DevOps Engineer</h1>
-    </section>
-
-    <!-- Bio Section -->
-    <section class="bio">
-        <div class="bio-content">
-            <h2>About Me</h2>
-            <p>My journey into DevOps started in the trenches of IT support at Bell Integration (supporting Blackrock) and SYDRC, where I discovered something hated by most: I actually <em>enjoy</em> when things break. There's something deeply satisfying about diving into a problem, understanding what went wrong and crafting a solution.</p>
-            
-            <p>That's what drew me to DevOps – the perfect blend of problem-solving and prevention through automation. Why manually deploy something fifty times when you can automate it once and never worry about human error again? Currently working towards my AWS Solutions Architect Associate certification and actively building projects that showcase real-world DevOps scenarios. From service desk tickets to infrastructure as code – I'm ready to bring my troubleshooting mindset and growing technical toolkit to a DevOps role where I can help teams ship faster and sleep better.</p>
-        </div>
-    </section>
-
-    <!-- Projects Section -->
-    <section class="projects" id="projects">
-        <h2>Featured Projects</h2>
-        <div class="project-grid">
-              <!-- Project 6 -->
-              <div class="project-tile" onclick="window.open('https://github.com/maaclin/maaclin', '_blank')">
-                <div class="project-header">
-                      <h3>☁️ Project 6: ☸️ Production-Grade Multi-App EKS Deployment - PENDING</h3>
-                      <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" class="project-icon">
-                              <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/>
-                      </svg>
-                      </div>
-                      <p>Goal: It includes end-to-end infrastructure provisioning using AWS, Kubernetes, Terraform, CI/CD pipelines, ArgoCD, Helm, ExternalDNS and CertManager.</p>
-              </div> 
-            <!-- Project 5 -->
-            <div class="project-tile" onclick="window.open('https://github.com/maaclin/maaclin', '_blank')">
-                <div class="project-header">
-                      <h3>☁️ Project 5: 📚 ServiceNow Knowledge Base ECS Deployment - PENDING</h3>
-                      <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" class="project-icon">
-                              <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/>
-                      </svg>
-                      </div>
-                      <p>Goal: ServiceNow Knowledge Base emulation using ECS, Terraform and CI/CD pipelines.</p>
-              </div> 
-            <!-- Project 4 -->
-            <div class="project-tile" onclick="window.open('https://github.com/maaclin/project-AWS-ECS-Fargate-CD', '_blank')">
-              <div class="project-header">
-                    <h3>☁️ Project 4: ⚙️ Threat Composer App with ECS</h3>
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" class="project-icon">
-                            <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/>
-                    </svg>
-                    </div>
-                    <p>Goal: Deploy an application using modern infrastructure tools like Docker, EKR, ECS and Terraform. This app is securely hosted on AWS with a custom subdomain managed through AWS Route53.</p>
-            </div>            
-                <!-- Project 3 -->
-                <div class="project-tile" onclick="window.open('https://github.com/maaclin/project-tf_deployment_wordpress', '_blank')">
-                    <div class="project-header">
-                          <h3>☁️ Project 3: 🏗️ WordPress deployed using Terraform</h3>
-                          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" class="project-icon">
-                                  <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/>
-                          </svg>
-                          </div>
-                          <p>Goal: Build a production-like WordPress deployment using Terraform, with a Vault server to store sensitive information.</p>
-                  </div>  
-             <!-- Project 2 -->
-             <div class="project-tile" onclick="window.open('https://github.com/maaclin/project_CI-CD', '_blank')">
-                <div class="project-header">
-                    <h3>🔧 Project 2: 🔄 CI-CD Pipeline using Codebuild</h3>
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" class="project-icon">
-                        <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/>
-                    </svg>
-                </div>
-                <p>Goal: Complete CI-CD pipeline using Codebuild, CodePipeline, and CodeCommit.</p>
-            </div>
-
-            <!-- Project 1 -->
-            <div class="project-tile" onclick="window.open('https://github.com/maaclin/project-portfolio_website', '_blank')">
-                <div class="project-header">
-                    <h3>🛠️ Project 1: 💻 Portfolio Website</h3>
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" class="project-icon">
-                        <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/>
-                    </svg>
-                </div>
-                <p>Here's how I built this webiste!</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Visitor Count -->
-    <div class="visitor-count" id="visitorCount">
-        0
+  <!-- Nav -->
+  <nav class="nav" aria-label="Primary">
+    <a class="brand" href="#top">
+      <span class="logo-dot" aria-hidden="true"></span>
+      <span>Yossief Solomon</span>
+    </a>
+    <div class="nav-cta">
+      <a class="btn" href="https://github.com/maaclin" target="_blank" rel="noopener">GitHub</a>
+      <a class="btn" href="https://www.linkedin.com/in/yossief-s/" target="_blank" rel="noopener">LinkedIn</a>
+      <a class="btn primary" href="ys2025.pdf" target="_blank" rel="noopener">CV</a>
     </div>
+  </nav>
 
-    <!-- Resume Modal -->
-    <div id="resumeModal" class="resume-modal">
-        <div class="resume-modal-content">
-            <div class="resume-modal-header">
-                <h3 class="resume-modal-title">📄 Resume - Yossief Solomon</h3>
-                <button class="resume-modal-close" onclick="closeResumeModal()">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
-                    </svg>
-                </button>
-            </div>
-            <iframe id="resumeIframe" class="resume-iframe" src="ys2025.pdf#toolbar=1&navpanes=0&scrollbar=1" title="Yossief Solomon Resume"></iframe>
-            <div id="resumeFallback" class="resume-fallback">
-                <div class="resume-fallback-icon">📄</div>
-                <h3>Unable to display PDF</h3>
-                <p>Your browser doesn't support inline PDF viewing, but you can download the resume to view it locally.</p>
-                <a href="ys2025.pdf" class="resume-download-btn" download>
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M5,20H19V18H5M19,9H15V3H9V9H5L12,16L19,9Z"/>
-                    </svg>
-                    Download Resume
-                </a>
-            </div>
-        </div>
+  <!-- Hero -->
+  <header class="hero" id="top">
+    <div class="mono type">$ git push production</div>
+    <h1 class="title">DevOps Engineer</h1>
+    <p class="lede">I build reliable pipelines that deliver. Fast.</p>
+    <div class="hero-badges">
+      <span class="badge">AWS</span>
+      <span class="badge">Terraform</span>
+      <span class="badge">Docker</span>
+      <span class="badge">ECS</span>
+      <span class="badge">EKS</span>
+      <span class="badge">CI/CD</span>
+      <span class="badge">GitHub Actions</span>
+      <span class="badge">Kubernetes</span>
+      <span class="badge">Linux</span>
     </div>
+  </header>
 
-    <script>
-        // Resume Modal Functions
-        function openResumeModal() {
-            const modal = document.getElementById('resumeModal');
-            const iframe = document.getElementById('resumeIframe');
-            const fallback = document.getElementById('resumeFallback');
-            
-            modal.classList.add('show');
-            document.body.style.overflow = 'hidden'; // Prevent scrolling behind modal
-            
-            // Check if PDF can be displayed (fallback for older browsers)
-            iframe.onload = function() {
-                iframe.style.display = 'block';
-                fallback.style.display = 'none';
-            };
-            
-            iframe.onerror = function() {
-                iframe.style.display = 'none';
-                fallback.style.display = 'flex';
-            };
-        }
+  <!-- About -->
+  <section>
+    <div class="container about">
+      <article class="card">
+        <h2 class="section-title">About</h2>
+        <p> I like making deployments boring - in a good way.  I’ve got a knack for problem‑solving; late‑night debugging surprisingly is where I get my best work done. I can leverage AI to speed up delivery and keep my learning loop tight. I’m well‑versed in AWS and explore new tools weekly by staying close to the DevOps community.</p>
+      </article>
+      <aside class="card">
+        <h2 class="section-title">Snapshot</h2>
+        <ul class="factlist">
+          <li><span>🧭</span><span>Role: DevOps (AWS)</span></li>
+          <li><span>⚙️</span><span>CI/CD: CodePipeline, GitHub Actions</span></li>
+          <li><span>📦</span><span>Containers: Docker, ECS, Kubernetes, EKS</span></li>
+          <li><span>🧰</span><span>IaC: Terraform (modules, workspaces)</span></li>
+          <li><span>🔐</span><span>Secrets: GitHub Secrets, Vault, IAM least‑privilege</span></li>
+        </ul>
+      </aside>
+    </div>
+  </section>
 
-        function closeResumeModal() {
-            const modal = document.getElementById('resumeModal');
-            modal.classList.remove('show');
-            document.body.style.overflow = 'auto'; // Restore scrolling
-        }
+  <!-- Projects -->
+  <section id="projects">
+    <div class="container">
+      <h2 class="section-title">Featured Projects</h2>
+      <p class="muted">Check out my repositories for my README's on each project</p>
+      <div class="grid" role="list">
+        <!-- EKS Multi-App (pending) -->
+        <article class="tile" role="listitem">
+          <h3>☸️ Multi‑App EKS Deployment (Pending)</h3>
+          <p>End‑to‑end infra with Terraform, GitHub Actions → ArgoCD, Helm, ExternalDNS, Cert‑Manager. Production‑like cluster layout.</p>
+          <div class="tags">
+            <span class="tag">Terraform</span><span class="tag">EKS</span><span class="tag">ArgoCD</span><span class="tag">Helm</span>
+          </div>
+          <div class="actions">
+            <a class="btn" href="https://github.com/maaclin/maaclin" target="_blank" rel="noopener">Repo</a>
+          </div>
+        </article>
+        <!-- ECS Threat Composer -->
+        <article class="tile" role="listitem">
+          <h3>⚙️ Threat Composer on ECS</h3>
+          <p>Containerised app deployed to ECS using Fargate with Terraform, custom subdomain via Route 53. CI/CD pushes images and tasks safely.</p>
+          <div class="tags">
+            <span class="tag">Docker</span><span class="tag">ECR/ECS</span><span class="tag">Terraform</span><span class="tag">Route 53</span>
+          </div>
+          <div class="actions">
+            <a class="btn" href="https://github.com/maaclin/project-AWS-ECS-Fargate-CD" target="_blank" rel="noopener">Repo</a>
+          </div>
+        </article>
+        <!-- WordPress Terraform + Vault -->
+        <article class="tile" role="listitem">
+          <h3>🏗️ WordPress via Terraform + Vault</h3>
+          <p>Two‑host deployment; secrets pulled from Vault at boot. Reproducible infra modules and zero manual steps.</p>
+          <div class="tags">
+            <span class="tag">Terraform</span><span class="tag">EC2</span><span class="tag">Vault</span>
+          </div>
+          <div class="actions">
+            <a class="btn" href="https://github.com/maaclin/project-tf_deployment_wordpress" target="_blank" rel="noopener">Repo</a>
+          </div>
+        </article>
+        <!-- CI/CD CodeBuild -->
+        <article class="tile" role="listitem">
+          <h3>🔄 CI/CD with CodeBuild</h3>
+          <p>Simple walkthrough for a Pipeline with CodeCommit → CodeBuild → CodePipeline. Artifact versioning, approvals and rollback path.</p>
+          <div class="tags">
+            <span class="tag">CodePipeline</span><span class="tag">CodeBuild</span><span class="tag">IAM</span>
+          </div>
+          <div class="actions">
+            <a class="btn" href="https://github.com/maaclin/project_CI-CD" target="_blank" rel="noopener">Repo</a>
+          </div>
+        </article>
+        <!-- Portfolio site -->
+        <article class="tile" role="listitem">
+          <h3>💻 This Portfolio</h3>
+          <p> Hosted on S3, served on CloudFront, created using Terraform. Accessible redesign with glass panels, micro‑interactions and an inline CV (thanks to Claude). </p>
+          <div class="tags">
+            <span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">a11y</span>
+          </div>
+          <div class="actions">
+            <a class="btn" href="https://github.com/maaclin/project-portfolio_website" target="_blank" rel="noopener">Repo</a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
 
-        // Close modal when clicking outside of it
-        document.addEventListener('click', function(event) {
-            const modal = document.getElementById('resumeModal');
-            if (event.target === modal) {
-                closeResumeModal();
-            }
-        });
+  <!-- Contact -->
+  <section id="contact">
+    <div class="container">
+      <h2 class="section-title">Let’s talk</h2>
+      <p class="muted">I’m London‑based and open to have a chat about prospective positions, hybrid or on‑site.
+      </p>
+      <div class="actions">
+        <a class="btn primary" href="mailto:ysolom90@gmail.com?subject=Interview%20with%20Yossief">Email me</a>
+        <a class="btn" href="ys2025.pdf" target="_blank" rel="noopener">Download CV</a>
+        <a class="btn" href="https://www.linkedin.com/in/yossief-s/" target="_blank" rel="noopener">Connect on LinkedIn</a>
+      </div>
+    </div>
+  </section>
 
-        // Close modal with Escape key
-        document.addEventListener('keydown', function(event) {
-            if (event.key === 'Escape') {
-                closeResumeModal();
-            }
-        });
+  <!-- Sticky CTA -->
+  <div class="sticky-cta">
+    <div class="bar">
+      <strong>Hiring a DevOps Engineer? Reach out to me!</strong>
+      <div class="actions"><a class="btn" href="mailto:ysolom90@gmail.com.com?subject=Interview%20with%20Yossief">Email</a> <a class="btn primary" href="https://www.linkedin.com/in/yossief-s/" target="_blank" rel="noopener">LinkedIn</a></div>
+    </div>
+  </div>
 
-        // Visitor count functionality
-        function updateVisitorCount() {
-            // Get current count from localStorage
-            let count = localStorage.getItem('visitorCount');
-            
-            // If no count exists, start from 0
-            if (!count) {
-                count = 0;
-            }
-            
-            // Increment count
-            count = parseInt(count) + 1;
-            
-            // Store updated count
-            localStorage.setItem('visitorCount', count);
-            
-            // Display count with animation
-            const countElement = document.getElementById('visitorCount');
-            countElement.style.opacity = '0';
-            
-            setTimeout(() => {
-                countElement.textContent = count.toLocaleString();
-                countElement.style.opacity = '1';
-            }, 300);
-        }
+  <!-- Resume Modal (re-uses your ys2025.pdf) -->
+  
 
-        // Initialize visitor count when page loads
-        document.addEventListener('DOMContentLoaded', function() {
-            updateVisitorCount();
-            
-            // Add some randomness to make it feel more realistic
-            const existingCount = parseInt(localStorage.getItem('visitorCount')) || 0;
-            if (existingCount < 50) {
-                // Add a base number to make it look more established
-                const baseCount = Math.floor(Math.random() * 200) + 150;
-                const newCount = existingCount + baseCount;
-                localStorage.setItem('visitorCount', newCount);
-                document.getElementById('visitorCount').textContent = newCount.toLocaleString();
-            }
-        });
-
-        // Optional: Reset count for testing (remove in production)
-        // localStorage.removeItem('visitorCount');
-    </script>
+  
 </body>
 </html>
