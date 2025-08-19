@@ -61,6 +61,8 @@
     .btn:hover { transform: translateY(-2px); box-shadow: 0 10px 20px rgba(14,165,233,.18); border-color: var(--aqua); }
     .btn.primary { background: linear-gradient(135deg, var(--aqua), var(--teal)); color: white; border: 1px solid transparent; }
     .btn.primary:hover { box-shadow: 0 12px 26px rgba(8,145,178,.35); }
+    .btn.video { background: linear-gradient(135deg, var(--aqua), var(--teal)); color: white; border: 1px solid transparent; font-weight: 600; }
+    .btn.video:hover { box-shadow: 0 12px 26px rgba(8,145,178,.35); }
 
     /* ---------- Hero ---------- */
     .hero { max-width: 1100px; margin: 70px auto 20px; padding: 0 24px; display: grid; gap: 22px; text-align: center; }
@@ -112,7 +114,8 @@
     .tile p { margin: 0 0 10px; color: var(--ink-2); }
     .tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; }
     .tag { font-family: 'IBM Plex Mono', monospace; font-size: .8rem; padding: 4px 8px; border-radius: 999px; background: #f1fbff; border: 1px solid rgba(14,165,233,.35); }
-    .tile .actions { display: flex; gap: 10px; margin-top: 12px; }
+    .tile .actions { display: flex; gap: 10px; margin-top: auto; padding-top: 16px; }
+    .tile { position: relative; overflow: hidden; border-radius: 18px; padding: 18px; background: linear-gradient(180deg, rgba(255,255,255,.9), rgba(255,255,255,.8)); border: 1px solid rgba(14,165,233,.25); box-shadow: var(--shadow); transition: transform .2s ease, box-shadow .2s ease; display: flex; flex-direction: column; }
 
     /* Fast facts for recruiters */
     .facts { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
@@ -125,6 +128,21 @@
     .sticky-cta { position: sticky; bottom: 0; z-index: 60; margin: 40px 12px 12px; }
     .bar { display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 12px; background: linear-gradient(135deg, rgba(14,165,233,.92), rgba(8,145,178,.92)); color: #fff; padding: 14px 18px; border-radius: 14px; box-shadow: 0 18px 40px rgba(8,145,178,.35); }
     .bar strong { font-size: 1rem; }
+
+    /* Video Modal */
+    .video-modal { position: fixed; inset: 0; background: rgba(0,0,0,.85); display: none; align-items: center; justify-content: center; padding: 24px; z-index: 1000; backdrop-filter: blur(8px); }
+    .video-modal.show { display: flex; animation: modalFadeIn 0.3s ease-out; }
+    .video-modal-card { width: min(1100px, 96vw); height: min(85vh, 700px); background: linear-gradient(135deg, #ffffff, #f8fbff); border-radius: 20px; overflow: hidden; box-shadow: 0 40px 100px rgba(0,0,0,.5), 0 0 0 1px rgba(255,255,255,.1); display: grid; grid-template-rows: auto 1fr; border: 1px solid rgba(14,165,233,.2); }
+    .video-modal-head { display: flex; align-items: center; justify-content: space-between; padding: 20px 24px; background: linear-gradient(135deg, var(--ink), var(--glacier)); color: #fff; border-bottom: 1px solid rgba(255,255,255,.1); }
+    .video-modal-head h4 { margin: 0; font-size: 1.2rem; font-weight: 600; letter-spacing: 0.3px; }
+    .video-close { background: rgba(255,255,255,.1); border: none; color: #fff; font-size: 20px; cursor: pointer; padding: 8px; border-radius: 8px; transition: all .2s ease; width: 36px; height: 36px; display: flex; align-items: center; justify-content: center; }
+    .video-close:hover { background: rgba(255,255,255,.2); transform: scale(1.05); }
+    .video-modal iframe { width: 100%; height: 100%; border: 0; background: #000; }
+    
+    @keyframes modalFadeIn {
+      from { opacity: 0; transform: scale(0.95); }
+      to { opacity: 1; transform: scale(1); }
+    }
 
     /* Resume Modal (kept compatible with your existing PDF) */
     .modal { position: fixed; inset: 0; background: rgba(0,0,0,.6); display: none; align-items: center; justify-content: center; padding: 24px; }
@@ -175,16 +193,16 @@
     <div class="container about">
       <article class="card">
         <h2 class="section-title">About</h2>
-        <p> I like making deployments boring - in a good way.  I’ve got a knack for problem‑solving; late‑night debugging surprisingly is where I get my best work done. I can leverage AI to speed up delivery and keep my learning loop tight. I’m well‑versed in AWS and explore new tools weekly by staying close to the DevOps community.</p>
+        <p> I like making deployments boring - in a good way.  I've got a knack for problem‑solving; late‑night debugging surprisingly is where I get my best work done. I can leverage AI to speed up delivery and keep my learning loop tight. I'm well‑versed in AWS and explore new tools weekly by staying close to the DevOps community.</p>
       </article>
       <aside class="card">
         <h2 class="section-title">Snapshot</h2>
         <ul class="factlist">
-          <li><span>🧭</span><span>Role: DevOps (AWS)</span></li>
+          <li><span>🧭</span><span>Roles: DevOps / Platform / Site Reliability Engineer (AWS)</span></li>
           <li><span>⚙️</span><span>CI/CD: CodePipeline, GitHub Actions</span></li>
           <li><span>📦</span><span>Containers: Docker, ECS, Kubernetes, EKS</span></li>
           <li><span>🧰</span><span>IaC: Terraform (modules, workspaces)</span></li>
-          <li><span>🔐</span><span>Secrets: GitHub Secrets, Vault, IAM least‑privilege</span></li>
+          <li><span>🔐</span><span>Secrets: GitHub Secrets, OIDC, Vault, Shift left principles</span></li>
         </ul>
       </aside>
     </div>
@@ -204,18 +222,32 @@
             <span class="tag">Terraform</span><span class="tag">EKS</span><span class="tag">ArgoCD</span><span class="tag">Helm</span>
           </div>
           <div class="actions">
-            <a class="btn" href="https://github.com/maaclin/project-eks_multi_app" target="_blank" rel="noopener">Repo</a>
+            <a class="btn" href="https://github.com/maaclin/project-eks_multi_app" target="_blank" rel="noopener">Repository</a>
+            <button class="btn video" onclick="openVideoModal('eks-deployment', 'EKS Multi-App Deployment Walkthrough')">📹 Watch Demo</button>
           </div>
         </article>
         <!-- ECS Threat Composer -->
         <article class="tile" role="listitem">
           <h3>⚙️ Threat Composer on ECS</h3>
-          <p>Containerised app deployed to ECS using Fargate with Terraform, custom subdomain via Route 53. CI/CD pushes images and tasks safely.</p>
+          <p>Containerised app deployed to ECS using Fargate with Terraform, custom subdomain via Route 53. CI/CD pushes images and tasks safely.</p>
           <div class="tags">
-            <span class="tag">Docker</span><span class="tag">ECR/ECS</span><span class="tag">Terraform</span><span class="tag">Route 53</span>
+            <span class="tag">Docker</span><span class="tag">ECR/ECS</span><span class="tag">Terraform</span><span class="tag">Route 53</span>
           </div>
           <div class="actions">
-            <a class="btn" href="https://github.com/maaclin/project-AWS-ECS-Fargate-CD" target="_blank" rel="noopener">Repo</a>
+            <a class="btn" href="https://github.com/maaclin/project-AWS-ECS-Fargate-CD" target="_blank" rel="noopener">Repository</a>
+            <button class="btn video" onclick="openVideoModal('threat-composer', 'Threat Composer ECS Deployment Walkthrough')">📹 Watch Demo</button>
+          </div>
+        </article>
+        <!-- Portfolio site -->
+        <article class="tile" role="listitem">
+          <h3>💻 This Portfolio</h3>
+          <p> Hosted on S3, served on CloudFront, created using Terraform. Accessible redesign with glass panels, micro‑interactions and an inline CV (thanks to Claude). </p>
+          <div class="tags">
+            <span class="tag">S3</span><span class="tag">CloudFront</span><span class="tag">Terraform</span><span class="tag">Route 53</span>
+          </div>
+          <div class="actions">
+            <a class="btn" href="https://github.com/maaclin/project-portfolio_website" target="_blank" rel="noopener">Repository</a>
+            <button class="btn video" onclick="openVideoModal('portfolio', 'Portfolio Website Walkthrough')">📹 Watch Demo</button>
           </div>
         </article>
         <!-- WordPress Terraform + Vault -->
@@ -226,7 +258,7 @@
             <span class="tag">Terraform</span><span class="tag">EC2</span><span class="tag">Vault</span>
           </div>
           <div class="actions">
-            <a class="btn" href="https://github.com/maaclin/project-tf_deployment_wordpress" target="_blank" rel="noopener">Repo</a>
+            <a class="btn" href="https://github.com/maaclin/project-tf_deployment_wordpress" target="_blank" rel="noopener">Repository</a>
           </div>
         </article>
         <!-- CI/CD CodeBuild -->
@@ -234,21 +266,10 @@
           <h3>🔄 CI/CD with CodeBuild</h3>
           <p>Simple walkthrough for a Pipeline with CodeCommit → CodeBuild → CodePipeline. Artifact versioning, approvals and rollback path.</p>
           <div class="tags">
-            <span class="tag">CodePipeline</span><span class="tag">CodeBuild</span><span class="tag">IAM</span>
+            <span class="tag">CodePipeline</span><span class="tag">CodeBuild</span><span class="tag">CodeCommit</span><span class="tag">IAM</span>
           </div>
           <div class="actions">
-            <a class="btn" href="https://github.com/maaclin/project_CI-CD" target="_blank" rel="noopener">Repo</a>
-          </div>
-        </article>
-        <!-- Portfolio site -->
-        <article class="tile" role="listitem">
-          <h3>💻 This Portfolio</h3>
-          <p> Hosted on S3, served on CloudFront, created using Terraform. Accessible redesign with glass panels, micro‑interactions and an inline CV (thanks to Claude). </p>
-          <div class="tags">
-            <span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">a11y</span>
-          </div>
-          <div class="actions">
-            <a class="btn" href="https://github.com/maaclin/project-portfolio_website" target="_blank" rel="noopener">Repo</a>
+            <a class="btn" href="https://github.com/maaclin/project_CI-CD" target="_blank" rel="noopener">Repository</a>
           </div>
         </article>
       </div>
@@ -258,8 +279,8 @@
   <!-- Contact -->
   <section id="contact">
     <div class="container">
-      <h2 class="section-title">Let’s talk</h2>
-      <p class="muted">I’m London‑based and open to have a chat about prospective positions, hybrid or on‑site.
+      <h2 class="section-title">Let's talk</h2>
+      <p class="muted">I'm London‑based and open to have a chat about prospective positions, hybrid or on‑site.
       </p>
       <div class="actions">
         <a class="btn primary" href="mailto:ysolom90@gmail.com?subject=Interview%20with%20Yossief">Email me</a>
@@ -277,9 +298,69 @@
     </div>
   </div>
 
+  <!-- Video Modal -->
+  <div id="videoModal" class="video-modal">
+    <div class="video-modal-card">
+      <div class="video-modal-head">
+        <h4 id="videoTitle">Project Demo</h4>
+        <button class="video-close" onclick="closeVideoModal()">&times;</button>
+      </div>
+      <iframe id="videoFrame" src="" frameborder="0" allowfullscreen></iframe>
+    </div>
+  </div>
+
   <!-- Resume Modal (re-uses your ys2025.pdf) -->
   
 
+  <script>
+    // Video modal functionality
+    const videoUrls = {
+      'eks-deployment': 'https://www.loom.com/embed/20d5b03943854487a3c7cea0f41510a2?sid=ec0de0ee-4485-4f3f-bfd3-145efb90b2e4',
+      'threat-composer': '', // Placeholder for future video
+      'portfolio': '' // Placeholder for future video
+    };
+
+    function openVideoModal(videoId, title) {
+      const modal = document.getElementById('videoModal');
+      const iframe = document.getElementById('videoFrame');
+      const titleElement = document.getElementById('videoTitle');
+      
+      if (videoUrls[videoId] && videoUrls[videoId].trim() !== '') {
+        iframe.src = videoUrls[videoId];
+        titleElement.textContent = title;
+        modal.classList.add('show');
+        document.body.style.overflow = 'hidden';
+      } else {
+        alert('Video coming soon! 🎬');
+      }
+    }
+
+    function closeVideoModal() {
+      const modal = document.getElementById('videoModal');
+      const iframe = document.getElementById('videoFrame');
+      
+      modal.classList.remove('show');
+      iframe.src = '';
+      document.body.style.overflow = 'auto';
+    }
+
+    // Close modal when clicking outside
+    document.getElementById('videoModal').addEventListener('click', function(e) {
+      if (e.target === this) {
+        closeVideoModal();
+      }
+    });
+
+    // Close modal with Escape key
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') {
+        const modal = document.getElementById('videoModal');
+        if (modal.classList.contains('show')) {
+          closeVideoModal();
+        }
+      }
+    });
+  </script>
   
 </body>
 </html>
