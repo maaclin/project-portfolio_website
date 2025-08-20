@@ -7,6 +7,7 @@ terraform {
       version = "~> 6.0"
     }
   }
+  
   backend "s3" {
     bucket       = "ysolomprojects-tfstate"
     key          = "terraform"

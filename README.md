@@ -9,7 +9,12 @@
 --- 
 
 ## Architecture Diagram  
+
 ![Architecture](./public/images/portfolio.png)
+
+## Check out my Loom video on how I did it: 
+
+[![Loom Video Thumbnail](images/loom.png)](https://www.loom.com/share/0d39e201e36b440e9c9da0ec6bfb2b88)
 
 ---
 
