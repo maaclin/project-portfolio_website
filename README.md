@@ -12,7 +12,7 @@
 
 ![Architecture](./public/images/portfolio.png)
 
-## Check out my Loom video on how I did it: 
+## Click the image below for my Loom video breakdown: 
 
 [![Loom Video Thumbnail](./public/images/loom.png)](https://www.loom.com/share/0d39e201e36b440e9c9da0ec6bfb2b88)
 
